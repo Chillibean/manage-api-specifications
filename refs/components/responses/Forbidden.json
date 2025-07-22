@@ -1,0 +1,10 @@
+{
+  "description": "Forbidden. You do not have permission to access this resource.",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas/Error.json"
+      }
+    }
+  }
+}
