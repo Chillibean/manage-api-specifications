@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.0",
+    "version": "1.0.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -62,9 +62,6 @@
       }
     },
     "schemas": {
-      "AuthenticityToken": {
-        "$ref": "refs/components/schemas/AuthenticityToken.json"
-      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },

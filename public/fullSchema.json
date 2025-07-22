@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.0",
+    "version": "1.0.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -113,11 +113,6 @@
       }
     },
     "schemas": {
-      "AuthenticityToken": {
-        "description": "The authenticity token",
-        "type": "string",
-        "example": "valid_token"
-      },
       "Error": {
         "description": "An error",
         "type": "object",
@@ -160,7 +155,7 @@
         }
       },
       "Forbidden": {
-        "description": "Forbidden. Insufficient permissions to perform the operation.",
+        "description": "Forbidden. You do not have permission to access this resource.",
         "content": {
           "application/json": {
             "schema": {
