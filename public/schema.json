@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "0.0.0",
+    "title": "Manage API",
+    "description": "This api is for all endpoints related to the manage area.",
+    "contact": {
+      "name": "ChilliPharm",
+      "url": "https://www.chillipharm.com"
+    },
+    "license": {
+      "name": "UNLICENSED",
+      "url": "https://www.chillipharm.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Example",
+      "description": "Example endpoints"
+    }
+  ],
+  "servers": [
+    {
+      "url": "http://chillipharm.test:3000/api/v1",
+      "description": "Local development"
+    },
+    {
+      "url": "https://qa.chillipharm.dev/api/v1",
+      "description": "QA"
+    },
+    {
+      "url": "https://chillipharm-staging.com/api/v1",
+      "description": "Staging"
+    },
+    {
+      "url": "https://chillipharm-uat.com/api/v1",
+      "description": "UAT"
+    },
+    {
+      "url": "https://www.chillipharm.com/api/v1",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/example": {
+      "$ref": "refs/paths/example.json"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "userSessionKey": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "user_session_key",
+        "description": "User session key cookie"
+      },
+      "chillipharmSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "_chillipharm_session",
+        "description": "ChilliPharm session cookie"
+      }
+    },
+    "schemas": {
+      "AuthenticityToken": {
+        "$ref": "refs/components/schemas/AuthenticityToken.json"
+      },
+      "Error": {
+        "$ref": "refs/components/schemas/Error.json"
+      },
+      "ExampleResponse": {
+        "$ref": "refs/components/schemas/ExampleResponse.json"
+      }
+    }
+  }
+}
