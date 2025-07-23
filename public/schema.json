@@ -44,6 +44,9 @@
   "paths": {
     "/example": {
       "$ref": "refs/paths/example.json"
+    },
+    "/example2": {
+      "$ref": "refs/paths/example2.json"
     }
   },
   "components": {
