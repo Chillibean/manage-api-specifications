@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.1",
+    "version": "1.0.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -44,6 +44,9 @@
   "paths": {
     "/example": {
       "$ref": "refs/paths/example.json"
+    },
+    "/example2": {
+      "$ref": "refs/paths/example2.json"
     }
   },
   "components": {

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "0.0.1",
+    "version": "1.0.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -47,6 +47,60 @@
         "summary": "Example endpoint",
         "description": "This is an example endpoint",
         "operationId": "getExample",
+        "tags": [
+          "Example"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "example",
+            "in": "query",
+            "description": "Example parameter",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExampleResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/example2": {
+      "get": {
+        "summary": "Example endpoint",
+        "description": "This is an example endpoint",
+        "operationId": "getExampleTwo",
         "tags": [
           "Example"
         ],
