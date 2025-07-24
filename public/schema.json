@@ -46,7 +46,7 @@
     }
   ],
   "paths": {
-    "/manage/form_template/{id}": {
+    "/manage/form_templates/{id}": {
       "$ref": "refs/paths/manage_form_template_{id}.json"
     },
     "/manage/global_form_templates": {

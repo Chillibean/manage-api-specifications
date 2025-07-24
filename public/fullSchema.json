@@ -46,7 +46,7 @@
     }
   ],
   "paths": {
-    "/manage/form_template/{id}": {
+    "/manage/form_templates/{id}": {
       "get": {
         "summary": "Get Form Template",
         "operationId": "getFormTemplate",
