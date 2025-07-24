@@ -13,8 +13,11 @@
     "created_at": {
       "type": "string",
       "description": "The date and time when the form template was created."
+    },
+    "body": {
+      "$ref": "./GlobalFormTemplateBody.json"
     }
   },
-  "required": ["id", "name", "created_at"],
+  "required": ["id", "name", "created_at", "body"],
   "additionalProperties": false 
 }
