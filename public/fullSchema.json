@@ -202,8 +202,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "description": "The unique identifier of the form template."
+            "type": "integer",
+            "description": "The unique id of the form template."
           },
           "name": {
             "type": "string",
