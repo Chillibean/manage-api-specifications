@@ -1,0 +1,73 @@
+{
+  "description": "A form template field",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The id of form template field",
+      "example": "ee8e24-1ca4-ee06-04ed-285b4b02ed70"
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of form template field",
+      "example": "Test 1"
+    },
+    "field_type": {
+      "type": "string",
+      "description": "The field type of form template field",
+      "example": "single_line"
+    },
+    "input_guidance": {
+      "type": "string",
+      "description": "The input guidance of form template field",
+      "example": ""
+    },
+    "position": {
+      "type": "number",
+      "description": "The position of form template field",
+      "example": 1
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "The enabled status of form template field",
+      "example": true
+    },
+    "validations": {
+      "$ref": "./FieldValidations.json"
+    },
+    "options": {
+      "type": "array",
+      "description": "The options of form template field",
+      "items": {
+        "type": "string",
+        "example": "Option 1"
+      }
+    },
+    "persisted": {
+      "type": "boolean",
+      "description": "The persisted status of form template field",
+      "example": true
+    },
+    "other_enabled": {
+      "type": "boolean",
+      "description": "The other enabled status of form template field",
+      "example": false
+    },
+    "other_field": {
+      "type": "string",
+      "description": "The other field of form template field",
+      "example": "Other"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "title",
+    "field_type",
+    "position",
+    "enabled",
+    "validations",
+    "options",
+    "other_enabled",
+    "other_field"
+  ]
+}
