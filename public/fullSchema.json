@@ -37,18 +37,21 @@
   ],
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Global Form Templates",
+      "description": "Endpoints related to global form templates"
+    },
+    {
+      "name": "Form Templates",
+      "description": "Endpoints related to form templates"
     }
   ],
   "paths": {
-    "/example": {
+    "/manage/form_template/{id}": {
       "get": {
-        "summary": "Example endpoint",
-        "description": "This is an example endpoint",
-        "operationId": "getExample",
+        "summary": "Get Form Template",
+        "operationId": "getFormTemplate",
         "tags": [
-          "Example"
+          "Form Templates"
         ],
         "security": [
           {
@@ -56,24 +59,25 @@
             "chillipharmSession": []
           }
         ],
+        "description": "Retrieve a specific form template by its ID.",
         "parameters": [
           {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
+            "name": "id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "The unique identifier of the form template."
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful response with form template data.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
+                  "$ref": "#/components/schemas/FormTemplate"
                 }
               }
             }
@@ -87,59 +91,8 @@
           "403": {
             "$ref": "#/components/responses/Forbidden"
           },
-          "409": {
-            "$ref": "#/components/responses/Conflict"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/example2": {
-      "get": {
-        "summary": "Example endpoint",
-        "description": "This is an example endpoint",
-        "operationId": "getExampleTwo",
-        "tags": [
-          "Example"
-        ],
-        "security": [
-          {
-            "userSessionKey": [],
-            "chillipharmSession": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/BadRequest"
-          },
-          "401": {
-            "$ref": "#/components/responses/Unauthorized"
-          },
-          "403": {
-            "$ref": "#/components/responses/Forbidden"
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "$ref": "#/components/responses/Conflict"
@@ -178,13 +131,28 @@
           }
         }
       },
-      "ExampleResponse": {
+      "FormTemplate": {
+        "description": "API schema for shortened global form templates.",
         "type": "object",
         "properties": {
-          "example": {
-            "type": "string"
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of the form template."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the form template."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the form template was created."
           }
-        }
+        },
+        "required": [
+          "id",
+          "name",
+          "created_at"
+        ]
       }
     },
     "responses": {
@@ -210,6 +178,16 @@
       },
       "Forbidden": {
         "description": "Forbidden. You do not have permission to access this resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not found. The requested resource could not be found.",
         "content": {
           "application/json": {
             "schema": {

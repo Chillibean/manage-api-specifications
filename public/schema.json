@@ -15,8 +15,12 @@
   },
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Global Form Templates",
+      "description": "Endpoints related to global form templates"
+    },
+    {
+      "name": "Form Templates",
+      "description": "Endpoints related to form templates"
     }
   ],
   "servers": [
@@ -42,12 +46,10 @@
     }
   ],
   "paths": {
-    "/example": {
-      "$ref": "refs/paths/example.json"
-    },
-    "/example2": {
-      "$ref": "refs/paths/example2.json"
+    "/manage/form_template/{id}": {
+      "$ref": "refs/paths/manage_form_template_{id}.json"
     }
+    
   },
   "components": {
     "securitySchemes": {
@@ -67,9 +69,6 @@
     "schemas": {
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
-      },
-      "ExampleResponse": {
-        "$ref": "refs/components/schemas/ExampleResponse.json"
       }
     }
   }
