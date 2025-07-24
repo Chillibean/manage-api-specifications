@@ -15,6 +15,6 @@
       "description": "The date and time when the form template was created."
     }
   },
-  "required": ["id", "name", "created_at"],
+  "required": ["id", "title", "created_at"],
   "additionalProperties": false 
 }
