@@ -213,13 +213,7 @@
             "type": "string",
             "description": "The date and time when the form template was created."
           }
-        },
-        "required": [
-          "id",
-          "title",
-          "created_at"
-        ],
-        "additionalProperties": false
+        }
       },
       "FieldValidations": {
         "description": "A form template field validations",
