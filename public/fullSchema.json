@@ -331,9 +331,9 @@
         "description": "API schema for the body of global form templates.",
         "type": "object",
         "properties": {
-          "title": {
+          "name": {
             "type": "string",
-            "description": "The title of the form template."
+            "description": "The name of the form template."
           },
           "description": {
             "type": "string",
@@ -348,7 +348,7 @@
           }
         },
         "required": [
-          "title",
+          "name",
           "description",
           "fields"
         ],
@@ -358,10 +358,6 @@
         "description": "API schema for shortened global form templates.",
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of the form template."
-          },
           "name": {
             "type": "string",
             "description": "The name of the form template."
