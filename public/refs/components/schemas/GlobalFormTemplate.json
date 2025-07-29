@@ -1,0 +1,19 @@
+{
+  "description": "API schema for shortened global form templates.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the form template."
+    },
+    "created_at": {
+      "type": "string",
+      "description": "The date and time when the form template was created."
+    },
+    "body": {
+      "$ref": "./GlobalFormTemplateBody.json"
+    }
+  },
+  "required": ["id", "name", "created_at", "body"],
+  "additionalProperties": false 
+}
