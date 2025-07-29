@@ -20,7 +20,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "../components/schemas/GlobalFormTemplate.json"
+                "$ref": "../components/schemas/GlobalFormTemplateShort.json"
               }
             }
           }

@@ -125,7 +125,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/GlobalFormTemplate"
+                    "$ref": "#/components/schemas/GlobalFormTemplateShort"
                   }
                 }
               }
@@ -258,6 +258,30 @@
             "description": "The date and time when the form template was created."
           }
         }
+      },
+      "GlobalFormTemplateShort": {
+        "description": "API schema for shortened global form templates.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique id of the global form template."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the form template."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the form template was created."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "created_at"
+        ],
+        "additionalProperties": false
       },
       "FieldValidations": {
         "description": "A form template field validations",
