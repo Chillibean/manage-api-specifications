@@ -358,6 +358,10 @@
         "description": "API schema for shortened global form templates.",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique id of the global form template."
+          },
           "name": {
             "type": "string",
             "description": "The name of the form template."
