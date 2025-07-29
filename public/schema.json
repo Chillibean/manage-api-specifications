@@ -51,6 +51,9 @@
     },
     "/manage/global_form_templates": {
       "$ref": "refs/paths/manage_global_form_templates.json"
+    },
+    "/manage/global_form_templates/upload_json": {
+      "$ref": "refs/paths/manage_global_form_templates_upload_json.json"
     }
   },
   "components": {
