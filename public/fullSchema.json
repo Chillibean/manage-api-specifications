@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -37,18 +37,21 @@
   ],
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Global Form Templates",
+      "description": "Endpoints related to global form templates"
+    },
+    {
+      "name": "Form Templates",
+      "description": "Endpoints related to form templates"
     }
   ],
   "paths": {
-    "/example": {
+    "/manage/form_templates/{id}": {
       "get": {
-        "summary": "Example endpoint",
-        "description": "This is an example endpoint",
-        "operationId": "getExample",
+        "summary": "Get Form Template",
+        "operationId": "getFormTemplate",
         "tags": [
-          "Example"
+          "Form Templates"
         ],
         "security": [
           {
@@ -56,24 +59,25 @@
             "chillipharmSession": []
           }
         ],
+        "description": "Retrieve a specific form template by its ID.",
         "parameters": [
           {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
+            "name": "id",
+            "in": "path",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "description": "The unique identifier of the form template."
           }
         ],
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful response with form template data.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
+                  "$ref": "#/components/schemas/FormTemplate"
                 }
               }
             }
@@ -86,6 +90,9 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "$ref": "#/components/responses/Conflict"
@@ -96,13 +103,12 @@
         }
       }
     },
-    "/example2": {
+    "/manage/global_form_templates": {
       "get": {
-        "summary": "Example endpoint",
-        "description": "This is an example endpoint",
-        "operationId": "getExampleTwo",
+        "summary": "Get Global Form Templates",
+        "operationId": "getGlobalFormTemplates",
         "tags": [
-          "Example"
+          "Global Form Templates"
         ],
         "security": [
           {
@@ -110,24 +116,17 @@
             "chillipharmSession": []
           }
         ],
-        "parameters": [
-          {
-            "name": "example",
-            "in": "query",
-            "description": "Example parameter",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Retrieve a list of global form templates.",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Successful response with a list of global form templates.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExampleResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GlobalFormTemplate"
+                  }
                 }
               }
             }
@@ -140,6 +139,70 @@
           },
           "403": {
             "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Global Form Template",
+        "operationId": "postGlobalFormTemplates",
+        "tags": [
+          "Global Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "description": "Create a new global form template from form template id",
+        "requestBody": {
+          "description": "Form template ID to create global form template",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "form_template_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the form template to be used for creating the global form template."
+                  }
+                },
+                "required": [
+                  "form_template_id"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful creation response with global form template data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalFormTemplate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
           },
           "409": {
             "$ref": "#/components/responses/Conflict"
@@ -178,13 +241,184 @@
           }
         }
       },
-      "ExampleResponse": {
+      "FormTemplate": {
+        "description": "API schema for shortened global form templates.",
         "type": "object",
         "properties": {
-          "example": {
-            "type": "string"
+          "id": {
+            "type": "integer",
+            "description": "The unique id of the form template."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the form template."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the form template was created."
           }
         }
+      },
+      "FieldValidations": {
+        "description": "A form template field validations",
+        "type": "object",
+        "properties": {
+          "required": {
+            "type": "boolean",
+            "description": "The required status of form template field validations",
+            "example": true
+          },
+          "input_format": {
+            "type": "string",
+            "description": "The input format of form template field validations",
+            "example": "email",
+            "nullable": true
+          },
+          "character_limit": {
+            "type": "number",
+            "description": "The character limit of form template field validations",
+            "example": 100,
+            "nullable": true
+          },
+          "character_restriction": {
+            "type": "string",
+            "description": "The character restriction of form template field validations",
+            "example": "letters",
+            "nullable": true
+          },
+          "date_restriction": {
+            "type": "string",
+            "description": "The date restriction of form template field validations",
+            "example": "not_past_date",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "required"
+        ]
+      },
+      "Field": {
+        "description": "A form template field",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of form template field",
+            "example": "ee8e24-1ca4-ee06-04ed-285b4b02ed70"
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of form template field",
+            "example": "Test 1"
+          },
+          "field_type": {
+            "type": "string",
+            "description": "The field type of form template field",
+            "example": "single_line"
+          },
+          "input_guidance": {
+            "type": "string",
+            "description": "The input guidance of form template field",
+            "example": ""
+          },
+          "position": {
+            "type": "number",
+            "description": "The position of form template field",
+            "example": 1
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "The enabled status of form template field",
+            "example": true
+          },
+          "validations": {
+            "$ref": "#/components/schemas/FieldValidations"
+          },
+          "options": {
+            "type": "array",
+            "description": "The options of form template field",
+            "items": {
+              "type": "string",
+              "example": "Option 1"
+            }
+          },
+          "persisted": {
+            "type": "boolean",
+            "description": "The persisted status of form template field",
+            "example": true
+          },
+          "other_enabled": {
+            "type": "boolean",
+            "description": "The other enabled status of form template field",
+            "example": false
+          },
+          "other_field": {
+            "type": "string",
+            "description": "The other field of form template field",
+            "example": "Other"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "field_type",
+          "position",
+          "enabled",
+          "validations",
+          "options",
+          "other_enabled",
+          "other_field"
+        ]
+      },
+      "GlobalFormTemplateBody": {
+        "description": "API schema for the body of global form templates.",
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A brief description of the form template."
+          },
+          "fields": {
+            "type": "array",
+            "description": "The fields included in the form template.",
+            "items": {
+              "$ref": "#/components/schemas/Field"
+            }
+          }
+        },
+        "required": [
+          "fields"
+        ],
+        "additionalProperties": false
+      },
+      "GlobalFormTemplate": {
+        "description": "API schema for shortened global form templates.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique id of the global form template."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the form template."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the form template was created."
+          },
+          "body": {
+            "$ref": "#/components/schemas/GlobalFormTemplateBody"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "created_at",
+          "body"
+        ],
+        "additionalProperties": false
       }
     },
     "responses": {
@@ -210,6 +444,16 @@
       },
       "Forbidden": {
         "description": "Forbidden. You do not have permission to access this resource.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Not found. The requested resource could not be found.",
         "content": {
           "application/json": {
             "schema": {
