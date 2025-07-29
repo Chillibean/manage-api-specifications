@@ -1,0 +1,23 @@
+{
+  "description": "API schema for the body of global form templates.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the form template."
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the form template."
+    },
+    "fields": {
+      "type": "array",
+      "description": "The fields included in the form template.",
+      "items": {
+        "$ref": "./Field.json"
+      }
+    }
+  },
+  "required": ["name", "description", "fields"],
+  "additionalProperties": false
+}
