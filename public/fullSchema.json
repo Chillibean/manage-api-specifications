@@ -104,6 +104,50 @@
       }
     },
     "/manage/global_form_templates": {
+      "get": {
+        "summary": "Get Global Form Templates",
+        "operationId": "getGlobalFormTemplates",
+        "tags": [
+          "Global Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "description": "Retrieve a list of global form templates.",
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of global form templates.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GlobalFormTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
       "post": {
         "summary": "Create Global Form Template",
         "operationId": "postGlobalFormTemplates",
