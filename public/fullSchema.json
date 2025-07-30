@@ -201,15 +201,15 @@
                   }
                 },
                 "required": [
+                  "authenticity_token",
                   "file"
-                ],
-                "additionalProperties": false
+                ]
               }
             }
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful response with global form template data.",
             "content": {
               "application/json": {
