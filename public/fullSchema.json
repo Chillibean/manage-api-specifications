@@ -187,7 +187,7 @@
           "description": "Global form template parameters",
           "required": true,
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
@@ -257,6 +257,11 @@
       }
     },
     "schemas": {
+      "AuthenticityToken": {
+        "description": "The authenticity token",
+        "type": "string",
+        "example": "valid_token"
+      },
       "Error": {
         "description": "An error",
         "type": "object",
@@ -446,11 +451,6 @@
           "body"
         ],
         "additionalProperties": false
-      },
-      "AuthenticityToken": {
-        "description": "The authenticity token",
-        "type": "string",
-        "example": "valid_token"
       }
     },
     "responses": {
