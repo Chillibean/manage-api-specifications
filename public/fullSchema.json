@@ -212,6 +212,77 @@
           }
         }
       }
+    },
+    "/manage/global_form_templates/upload_json": {
+      "post": {
+        "summary": "Create Global Form Template from JSON",
+        "operationId": "postGlobalFormTemplatesJSON",
+        "tags": [
+          "Global Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "description": "Create a new global form template from JSON",
+        "requestBody": {
+          "description": "Global form template parameters",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authenticity_token": {
+                    "$ref": "#/components/schemas/AuthenticityToken"
+                  },
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Global form template JSON data file."
+                  }
+                },
+                "required": [
+                  "authenticity_token",
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response with global form template data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GlobalFormTemplate"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -447,6 +518,11 @@
           "body"
         ],
         "additionalProperties": false
+      },
+      "AuthenticityToken": {
+        "description": "The authenticity token",
+        "type": "string",
+        "example": "valid_token"
       }
     },
     "responses": {
