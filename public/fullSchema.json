@@ -189,7 +189,18 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GlobalFormTemplateBody"
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Global form template JSON data file."
+                  }
+                },
+                "required": [
+                  "file"
+                ],
+                "additionalProperties": false
               }
             }
           }
