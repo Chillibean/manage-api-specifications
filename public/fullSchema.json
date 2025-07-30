@@ -191,6 +191,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "authenticity_token": {
+                    "$ref": "#/components/schemas/AuthenticityToken"
+                  },
                   "file": {
                     "type": "string",
                     "format": "binary",
@@ -443,6 +446,11 @@
           "body"
         ],
         "additionalProperties": false
+      },
+      "AuthenticityToken": {
+        "description": "The authenticity token",
+        "type": "string",
+        "example": "valid_token"
       }
     },
     "responses": {
