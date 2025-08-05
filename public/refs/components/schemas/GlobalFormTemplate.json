@@ -1,5 +1,5 @@
 {
-  "description": "API schema for shortened global form templates.",
+  "description": "API schema for global form templates.",
   "type": "object",
   "properties": {
     "id": {

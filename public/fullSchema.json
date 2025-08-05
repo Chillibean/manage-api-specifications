@@ -104,6 +104,50 @@
       }
     },
     "/manage/global_form_templates": {
+      "get": {
+        "summary": "Get Global Form Templates",
+        "operationId": "getGlobalFormTemplates",
+        "tags": [
+          "Global Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "description": "Retrieve a list of global form templates.",
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of global form templates.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GlobalFormTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
       "post": {
         "summary": "Create Global Form Template",
         "operationId": "postGlobalFormTemplates",
@@ -239,6 +283,86 @@
           }
         }
       }
+    },
+    "/manage/global_form_templates/{id}": {
+      "put": {
+        "summary": "Update a global form template",
+        "operationId": "updateGlobalFormTemplate",
+        "description": "Updates an existing global form template by ID.",
+        "tags": [
+          "Global Form Templates"
+        ],
+        "security": [
+          {
+            "userSessionKey": [],
+            "chillipharmSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID of the global form template to update",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the global form template."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Global form template updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "The unique identifier of the global form template."
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "The name of the global form template."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -272,63 +396,6 @@
             "example": "Bad request. Missing or invalid input parameters."
           }
         }
-      },
-      "FormTemplate": {
-        "description": "API schema for shortened global form templates.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "The unique id of the form template."
-          },
-          "title": {
-            "type": "string",
-            "description": "The title of the form template."
-          },
-          "created_at": {
-            "type": "string",
-            "description": "The date and time when the form template was created."
-          }
-        }
-      },
-      "FieldValidations": {
-        "description": "A form template field validations",
-        "type": "object",
-        "properties": {
-          "required": {
-            "type": "boolean",
-            "description": "The required status of form template field validations",
-            "example": true
-          },
-          "input_format": {
-            "type": "string",
-            "description": "The input format of form template field validations",
-            "example": "email",
-            "nullable": true
-          },
-          "character_limit": {
-            "type": "number",
-            "description": "The character limit of form template field validations",
-            "example": 100,
-            "nullable": true
-          },
-          "character_restriction": {
-            "type": "string",
-            "description": "The character restriction of form template field validations",
-            "example": "letters",
-            "nullable": true
-          },
-          "date_restriction": {
-            "type": "string",
-            "description": "The date restriction of form template field validations",
-            "example": "not_past_date",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "required"
-        ]
       },
       "Field": {
         "description": "A form template field",
@@ -403,29 +470,65 @@
           "other_field"
         ]
       },
-      "GlobalFormTemplateBody": {
-        "description": "API schema for the body of global form templates.",
+      "FieldValidations": {
+        "description": "A form template field validations",
         "type": "object",
         "properties": {
-          "description": {
-            "type": "string",
-            "description": "A brief description of the form template."
+          "required": {
+            "type": "boolean",
+            "description": "The required status of form template field validations",
+            "example": true
           },
-          "fields": {
-            "type": "array",
-            "description": "The fields included in the form template.",
-            "items": {
-              "$ref": "#/components/schemas/Field"
-            }
+          "input_format": {
+            "type": "string",
+            "description": "The input format of form template field validations",
+            "example": "email",
+            "nullable": true
+          },
+          "character_limit": {
+            "type": "number",
+            "description": "The character limit of form template field validations",
+            "example": 100,
+            "nullable": true
+          },
+          "character_restriction": {
+            "type": "string",
+            "description": "The character restriction of form template field validations",
+            "example": "letters",
+            "nullable": true
+          },
+          "date_restriction": {
+            "type": "string",
+            "description": "The date restriction of form template field validations",
+            "example": "not_past_date",
+            "nullable": true
           }
         },
+        "additionalProperties": false,
         "required": [
-          "fields"
-        ],
-        "additionalProperties": false
+          "required"
+        ]
+      },
+      "FormTemplate": {
+        "description": "API schema for shortened global form templates.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique id of the form template."
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the form template."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date and time when the form template was created."
+          }
+        }
       },
       "GlobalFormTemplate": {
-        "description": "API schema for shortened global form templates.",
+        "description": "API schema for global form templates.",
         "type": "object",
         "properties": {
           "id": {
@@ -449,6 +552,31 @@
           "name",
           "created_at",
           "body"
+        ],
+        "additionalProperties": false
+      },
+      "GlobalFormTemplateBody": {
+        "description": "API schema for the body of global form templates.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the global form template."
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the form template."
+          },
+          "fields": {
+            "type": "array",
+            "description": "The fields included in the form template.",
+            "items": {
+              "$ref": "#/components/schemas/Field"
+            }
+          }
+        },
+        "required": [
+          "fields"
         ],
         "additionalProperties": false
       }

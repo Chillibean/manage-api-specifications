@@ -54,6 +54,9 @@
     },
     "/manage/global_form_templates/upload_json": {
       "$ref": "refs/paths/manage_global_form_templates_upload_json.json"
+    },
+    "/manage/global_form_templates/{id}": {
+      "$ref": "refs/paths/manage_global_form_template_{id}.json"
     }
   },
   "components": {
@@ -77,6 +80,21 @@
       },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
+      },
+      "Field": {
+        "$ref": "refs/components/schemas/Field.json"
+      },
+      "FieldValidations": {
+        "$ref": "refs/components/schemas/FieldValidations.json"
+      },
+      "FormTemplate": {
+        "$ref": "refs/components/schemas/FormTemplate.json"
+      },
+      "GlobalFormTemplate": {
+        "$ref": "refs/components/schemas/GlobalFormTemplate.json"
+      },
+      "GlobalFormTemplateBody": {
+        "$ref": "refs/components/schemas/GlobalFormTemplateBody.json"
       }
     }
   }
