@@ -169,6 +169,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "authenticity_token": {
+                    "$ref": "#/components/schemas/AuthenticityToken"
+                  },
                   "form_template_id": {
                     "type": "string",
                     "description": "The unique identifier of the form template to be used for creating the global form template."
@@ -245,6 +248,9 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "authenticity_token": {
+                    "$ref": "#/components/schemas/AuthenticityToken"
+                  },
                   "name": {
                     "type": "string",
                     "description": "The name of the global form template."
@@ -310,6 +316,11 @@
       }
     },
     "schemas": {
+      "AuthenticityToken": {
+        "description": "The authenticity token",
+        "type": "string",
+        "example": "valid_token"
+      },
       "Error": {
         "description": "An error",
         "type": "object",
