@@ -30,6 +30,9 @@
           "schema": {
             "type": "object",
             "properties": {
+              "authenticity_token": {
+                "$ref": "../components/schemas/AuthenticityToken.json"
+              },
               "name": {
                 "type": "string",
                 "description": "The name of the global form template."
