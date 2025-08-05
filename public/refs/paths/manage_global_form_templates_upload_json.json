@@ -29,6 +29,7 @@
                 "description": "Global form template JSON data file."
               }
             },
+            "additionalProperties": false,
             "required": ["authenticity_token", "file"]
           }
         }
