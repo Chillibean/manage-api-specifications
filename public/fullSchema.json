@@ -302,7 +302,7 @@
     "/manage/global_form_templates/{id}/create": {
       "post": {
         "summary": "Create Form Template from Global Form Template",
-        "operationId": "createFormTemplateFromGlobalFormTemplate",
+        "operationId": "postGlobalFormTemplateCreate",
         "description": "Create a new form template from global form template id.",
         "tags": [
           "Global Form Templates"
