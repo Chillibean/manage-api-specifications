@@ -325,6 +325,7 @@
           }
         ],
         "requestBody": {
+          "description": "Accoubt ID to create form template",
           "required": true,
           "content": {
             "application/json": {
@@ -333,10 +334,16 @@
                 "properties": {
                   "authenticity_token": {
                     "$ref": "#/components/schemas/AuthenticityToken"
+                  },
+                  "account_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the account to be used for creating the form template."
                   }
                 },
+                "additionalProperties": false,
                 "required": [
-                  "authenticity_token"
+                  "authenticity_token",
+                  "account_id"
                 ]
               }
             }
