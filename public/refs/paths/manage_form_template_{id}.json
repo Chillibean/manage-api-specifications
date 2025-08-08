@@ -1,7 +1,7 @@
 {
   "get": {
     "summary": "Get Form Template",
-    "operationId": "getFormTemplate",
+    "operationId": "getManageFormTemplate",
     "tags": [
       "Form Templates"
     ],
