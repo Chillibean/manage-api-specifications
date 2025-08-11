@@ -49,7 +49,7 @@
     "/manage/form_templates/{id}": {
       "get": {
         "summary": "Get Form Template",
-        "operationId": "getFormTemplate",
+        "operationId": "getManageFormTemplate",
         "tags": [
           "Form Templates"
         ],
