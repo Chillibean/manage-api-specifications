@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "title": "Manage API",
     "description": "This api is for all endpoints related to the manage area.",
     "contact": {
@@ -15,8 +15,12 @@
   },
   "tags": [
     {
-      "name": "Example",
-      "description": "Example endpoints"
+      "name": "Global Form Templates",
+      "description": "Endpoints related to global form templates"
+    },
+    {
+      "name": "Form Templates",
+      "description": "Endpoints related to form templates"
     }
   ],
   "servers": [
@@ -42,11 +46,20 @@
     }
   ],
   "paths": {
-    "/example": {
-      "$ref": "refs/paths/example.json"
+    "/manage/form_templates/{id}": {
+      "$ref": "refs/paths/manage_form_template_{id}.json"
     },
-    "/example2": {
-      "$ref": "refs/paths/example2.json"
+    "/manage/global_form_templates": {
+      "$ref": "refs/paths/manage_global_form_templates.json"
+    },
+    "/manage/global_form_templates/upload_json": {
+      "$ref": "refs/paths/manage_global_form_templates_upload_json.json"
+    },
+    "/manage/global_form_templates/{id}": {
+      "$ref": "refs/paths/manage_global_form_template_{id}.json"
+    },
+    "/manage/global_form_templates/{id}/create": {
+      "$ref": "refs/paths/manage_global_form_template_{id}_create.json"
     }
   },
   "components": {
@@ -65,11 +78,26 @@
       }
     },
     "schemas": {
+      "AuthenticityToken": {
+        "$ref": "refs/components/schemas/AuthenticityToken.json"
+      },
       "Error": {
         "$ref": "refs/components/schemas/Error.json"
       },
-      "ExampleResponse": {
-        "$ref": "refs/components/schemas/ExampleResponse.json"
+      "Field": {
+        "$ref": "refs/components/schemas/Field.json"
+      },
+      "FieldValidations": {
+        "$ref": "refs/components/schemas/FieldValidations.json"
+      },
+      "FormTemplate": {
+        "$ref": "refs/components/schemas/FormTemplate.json"
+      },
+      "GlobalFormTemplate": {
+        "$ref": "refs/components/schemas/GlobalFormTemplate.json"
+      },
+      "GlobalFormTemplateBody": {
+        "$ref": "refs/components/schemas/GlobalFormTemplateBody.json"
       }
     }
   }

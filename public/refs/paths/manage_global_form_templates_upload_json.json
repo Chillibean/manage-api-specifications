@@ -1,0 +1,69 @@
+{
+  "post": {
+    "summary": "Create Global Form Template from JSON",
+    "operationId": "createGlobalFormTemplateFromJson",
+    "tags": [
+      "Global Form Templates"
+    ],
+    "security": [
+      {
+        "userSessionKey": [],
+        "chillipharmSession": []
+      }
+    ],
+    "description": "Create a new global form template from JSON",
+    "requestBody": {
+      "description": "Global form template parameters",
+      "required": true,
+      "content": {
+        "multipart/form-data": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "authenticity_token": {
+                "$ref": "../components/schemas/AuthenticityToken.json"
+              },
+              "file": {
+                "type": "string",
+                "format": "binary",
+                "description": "Global form template JSON data file."
+              }
+            },
+            "additionalProperties": false,
+            "required": ["authenticity_token", "file"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Successful response with global form template data.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "../components/schemas/GlobalFormTemplate.json"
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../components/responses/BadRequest.json"
+      },
+      "401": {
+        "$ref": "../components/responses/Unauthorized.json"
+      },
+      "403": {
+        "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
+      },
+      "409": {
+        "$ref": "../components/responses/Conflict.json"
+      },
+      "500": {
+        "$ref": "../components/responses/InternalServerError.json"
+      }
+    }
+  }
+}
