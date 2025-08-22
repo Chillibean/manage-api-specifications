@@ -150,7 +150,7 @@
       },
       "post": {
         "summary": "Create Global Form Template",
-        "operationId": "postGlobalFormTemplates",
+        "operationId": "createGlobalFormTemplate",
         "tags": [
           "Global Form Templates"
         ],
@@ -219,7 +219,7 @@
     "/manage/global_form_templates/upload_json": {
       "post": {
         "summary": "Create Global Form Template from JSON",
-        "operationId": "postGlobalFormTemplatesJSON",
+        "operationId": "createGlobalFormTemplateFromJson",
         "tags": [
           "Global Form Templates"
         ],
@@ -374,7 +374,7 @@
     "/manage/global_form_templates/{id}/create": {
       "post": {
         "summary": "Create Form Template from Global Form Template",
-        "operationId": "postGlobalFormTemplateCreate",
+        "operationId": "createFormTemplateFromGlobalFormTemplate",
         "description": "Create a new form template from global form template id.",
         "tags": [
           "Global Form Templates"
