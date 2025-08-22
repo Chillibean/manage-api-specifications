@@ -45,7 +45,7 @@
   },
   "post": {
     "summary": "Create Global Form Template",
-    "operationId": "postGlobalFormTemplates",
+    "operationId": "createGlobalFormTemplate",
     "tags": [
       "Global Form Templates"
     ],

@@ -1,7 +1,7 @@
 {
   "post": {
     "summary": "Create Global Form Template from JSON",
-    "operationId": "postGlobalFormTemplatesJSON",
+    "operationId": "createGlobalFormTemplateFromJson",
     "tags": [
       "Global Form Templates"
     ],
