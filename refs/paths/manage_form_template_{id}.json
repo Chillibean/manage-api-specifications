@@ -1,10 +1,9 @@
 {
   "get": {
-    "summary": "Example endpoint",
-    "description": "This is an example endpoint",
-    "operationId": "getExample",
+    "summary": "Get Form Template",
+    "operationId": "getManageFormTemplate",
     "tags": [
-      "Example"
+      "Form Templates"
     ],
     "security": [
       {
@@ -12,24 +11,25 @@
         "chillipharmSession": []
       }
     ],
+    "description": "Retrieve a specific form template by its ID.",
     "parameters": [
       {
-        "name": "example",
-        "in": "query",
-        "description": "Example parameter",
+        "name": "id",
+        "in": "path",
         "required": true,
         "schema": {
           "type": "string"
-        }
+        },
+        "description": "The unique identifier of the form template."
       }
     ],
     "responses": {
       "200": {
-        "description": "OK",
+        "description": "Successful response with form template data.",
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "../components/schemas/ExampleResponse.json"
+              "$ref": "../components/schemas/FormTemplate.json"
             }
           }
         }
@@ -42,6 +42,9 @@
       },
       "403": {
         "$ref": "../components/responses/Forbidden.json"
+      },
+      "404": {
+        "$ref": "../components/responses/NotFound.json"
       },
       "409": {
         "$ref": "../components/responses/Conflict.json"
