@@ -83,7 +83,7 @@ jobs:
     needs: create-pre-release
     if: ${{ !github.event.pull_request.draft }}
     permissions:
-      contents: write
+      contents: read
       packages: write
     steps:
       - name: Generate GitHub App Token
